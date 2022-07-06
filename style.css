@@ -55,8 +55,8 @@ span{
 
 main{
     margin: 0 auto;
-    max-width: 70%;
-    padding: 150px 0;
+    max-width: 750px;
+    padding: 200px 0;
 }
 
 .game{
@@ -135,7 +135,7 @@ main{
     display: flex;
     color: #ffffff;
 
-    transition: 2s;
+    transition: .6s;
     opacity: 0;
     transform: translateY(150%);
 }
@@ -159,21 +159,19 @@ main{
     font-size: 24px;
 }
 
+.pick-container-player,
+.pick-container-ai{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;}
+
 .pick_placeholder{
     aspect-ratio: 1 / 1;
     background-color: rgba(0,0,0,0.25);
     border-radius: 50%;
     width: 65%;
-}
-
-.slide__to__left{
-    transform: translate(-250%, 0);
-    opacity: 0;
-}
-
-.slide__from__bottom{
-    transform: translateY(0%);
-    opacity: 1;
 }
 
 .result{
@@ -182,6 +180,7 @@ main{
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
+    display: none;
 }
 
 .result-span{
@@ -199,4 +198,35 @@ main{
     font-size: 18px;
     font-weight:600;
     letter-spacing: 1px;
+}
+
+
+.slide__to__left{
+    transform: translate(-250%, 0);
+    opacity: 0;
+}
+
+.slide__from__bottom{
+    transform: translateY(-100%);
+    opacity: 1;
+}
+
+.result__animation{
+    display: flex;
+    animation: spreadDiv .5s linear;
+}
+
+@keyframes spreadDiv{
+    0%{
+        display: flex;
+        opacity: 0;
+        width: 0%;        
+    }
+    80%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+        width: 20%;
+    }
 }

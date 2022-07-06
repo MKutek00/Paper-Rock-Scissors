@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@100;700&display=swap" rel="stylesheet"> 
   
+  <script src="main.js" defer></script>
   <title>Frontend Mentor | Rock, Paper, Scissors</title>
 
 </head>
@@ -26,21 +27,21 @@
     </div>
   </header>    
   <main>
-    <section class="game" style="display:none">
+    <section class="game">
 
-      <button class="button button__paper">
+      <button class="button button__paper" data-key="paper">
         <div class="button_image_container">
           <img src="./images/icon-paper.svg" alt="Paper">
         </div>
       </button>
 
-      <button class="button button__scissors">
+      <button class="button button__scissors" data-key="scissors" >
         <div class="button_image_container">
           <img src="./images/icon-scissors.svg" alt="Scissors">
         </div>
       </button>
 
-      <button class="button button__rock">
+      <button class="button button__rock" data-key="rock">
         <div class="button_image_container">
           <img src="./images/icon-rock.svg" alt="Rock">
         </div>
@@ -48,34 +49,27 @@
 
     </section>
 
-    <section class="fight slide__from__bottom">
+    <section class="fight">
       <div class="pick">
 
         <span class="pick__title">YOU PICKED</span>
-        <div class="button button__scissors">
-          <div class="button_image_container">
-            <img src="./images/icon-scissors.svg" alt="Scissors">
-          </div>
-        </div>
+        <div class="pick-container-player">
 
+        </div>
       </div>
 
       <div class="result">
         <span class="result-span">YOU LOSE</span>
         <button class="play-again">PLAY AGAIN</button>
       </div>
+
       <div class="pick">
 
-        <span class="pick__title">THE HOUSE PICKED</span>
-        <!-- <div class="pick_placeholder">
-          
-        </div> -->
-        <div class="button button__scissors">
-          <div class="button_image_container">
-            <img src="./images/icon-scissors.svg" alt="Scissors">
+        <span class="pick__title">COMPUTER PICKED</span>
+        <div class="pick-container-ai">
+
           </div>
         </div>
-
       </div>
     </section>
   </main>
