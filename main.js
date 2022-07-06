@@ -1,8 +1,14 @@
 const allPicks = [...document.querySelectorAll(".game button")];
 const scoreSpan = document.querySelector(".score strong");
+const resetGame = document.querySelector(".play-again");
+const pickPanel = document.querySelector(".game");
+const fightPanel = document.querySelector(".fight");
+const resultPanel = document.querySelector(".result");
 
+
+const playerWinsLSKey = "playerWins";
 const gameState = {
-    score: 0,
+    score: localStorage.getItem(playerWinsLSKey) || 0,
     playerPick: null,
     aiPick: null
 }
@@ -34,8 +40,8 @@ const playerChoise = (e) => {
 }
 
 const changeGamePanel = () =>{
-    document.querySelector(".game").classList.add("slide__to__left");
-    document.querySelector(".fight").classList.add("slide__from__bottom");
+    pickPanel.classList.add("slide__to__left");
+    fightPanel.classList.add("slide__from__bottom");
 
     showChoise("player");
     showChoise("ai");
@@ -47,7 +53,7 @@ const showResult = () =>{
     const result = whoWin().toUpperCase();
     scoreSpan.textContent = gameState.score;
     document.querySelector(".result-span").textContent = `YOU ${result}`;
-    document.querySelector(".result").classList.add("result__animation");
+    resultPanel.classList.add("result__animation");
 }
 
 const whoWin = () =>{
@@ -55,9 +61,11 @@ const whoWin = () =>{
         return "draw";
     }else if(whoIsStronger[gameState.playerPick].includes(gameState.aiPick)){
         gameState.score++;
+        localStorage.setItem(playerWinsLSKey, gameState.score);
         return "win";
     }else{
         gameState.score--;
+        localStorage.setItem(playerWinsLSKey, gameState.score);
         return "lose";
     }
 }
@@ -87,4 +95,9 @@ const aiChoise = () => {
     gameState.aiPick = availablePicks[Math.floor(Math.random() * 3)];
 }
 
+resetGame.addEventListener("click", () =>{
+    pickPanel.classList.remove("slide__to__left");
+    fightPanel.classList.remove("slide__from__bottom");
+    resultPanel.classList.remove("result__animation");
+})
 init();
